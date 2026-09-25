@@ -17,7 +17,6 @@ def input_students():
         students.append({"id": sid, "name": name, "dob": dob})
     return students
 
-
 def input_courses():
     courses = []
     n = int(input("Number of courses: "))
@@ -27,20 +26,17 @@ def input_courses():
         courses.append({"id": cid, "name": name})
     return courses
 
-
 def find_course(courses, cid):
     for c in courses:
         if c["id"] == cid:
             return c
     return None
 
-
 def find_student(students, sid):
     for s in students:
         if s["id"] == sid:
             return s
     return None
-
 
 def input_marks(students, courses, marks):
     list_courses(courses)
@@ -54,16 +50,13 @@ def input_marks(students, courses, marks):
         mark = float(input(f"Mark for {s['name']}: "))
         marks[cid][s["id"]] = mark
 
-
 def list_courses(courses):
     for c in courses:
         print(c["id"], "-", c["name"])
 
-
 def list_students(students):
     for s in students:
         print(s["id"], "-", s["name"], "-", s["dob"])
-
 
 def show_marks(students, courses, marks):
     list_courses(courses)
@@ -74,7 +67,6 @@ def show_marks(students, courses, marks):
     for sid, mark in marks[cid].items():
         s = find_student(students, sid)
         print(sid, "-", s["name"] if s else "?", ":", mark)
-
 
 def main():
     students, courses, marks = [], [], {}
@@ -95,7 +87,6 @@ def main():
             show_marks(students, courses, marks)
         elif c == "0":
             break
-
 
 if __name__ == "__main__":
     main()
