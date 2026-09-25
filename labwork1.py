@@ -8,13 +8,11 @@ Original file is located at
 """
 
 #Problem 1 - Caculate circle area
-
 radius = float(input("Enter circle radius? "))
 area = 3.14 * radius ** 2
 print("Circle area =", area)
 
 #Problem 2 - converst C into F
-
 celsius = float(input("Enter the temperature in Celsius?"))
 fahrenheit = celsius * 9/5 + 32
 print(f"{celsius} (C) = {fahrenheit} (F)") #f-string
@@ -22,7 +20,6 @@ print(f"{celsius} (C) = {fahrenheit} (F)") #f-string
 #print(celsius, "(C) = ", fahrenheit, "(F)")
 
 #Problem 3 - prime number
-
 num = int(input("Enter a number? "))
 is_prime = True
 if num < 2:
@@ -39,7 +36,6 @@ else:
     print(num, "is a NOT prime number")
 
 #Problem 4 - perfect number
-
 num = int(input("Enter a number?"))
 sum_divisors = 0
 
@@ -53,7 +49,6 @@ else:
     print(num, "is a NOT perfect number")
 
 #Problem 5 - favorite color
-
 colors = ["Yellow", "Blue", "Black", "Red", "White"]
 
 favorite = input("What is your favorite color? ")
@@ -65,7 +60,6 @@ else:
     print("Sorry, I could not find your color")
 
 #Problem 6 - range(start, end, step)
-
 range1 = range(0, 7)
 print("range1:", list(range1))
 
