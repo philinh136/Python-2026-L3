@@ -421,6 +421,3 @@ class MarkManager:
 
     def students_sorted_by_gpa(self):
         return sorted(self.students, key=lambda s: self.gpa(s.id), reverse=True)
-
-
-
