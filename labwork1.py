@@ -29,7 +29,6 @@ else:
         if num % i == 0:
             is_prime = False
             break
-
 if is_prime:
     print(num, "is a prime number")
 else:
