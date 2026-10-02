@@ -3,45 +3,45 @@ import curses
 import math
 import numpy as np
 
-
+#Student class
 class Student:
     def __init__(self, sid, name, dob):
         self.id = sid
         self.name = name
         self.dob = dob
 
-
+#Course class
 class Course:
     def __init__(self, cid, name, credit):
         self.id = cid
         self.name = name
         self.credit = credit
 
-
+#MarkManager class
 class MarkManager:
     def __init__(self):
         self.students = []
         self.courses = []
         self.marks = {}
-
+#find student by id
     def find_student(self, sid):
         for s in self.students:
             if s.id == sid:
                 return s
         return None
-
+#find course by id
     def find_course(self, cid):
         for c in self.courses:
             if c.id == cid:
                 return c
         return None
-
+#add student to the list
     def add_student(self, sid, name, dob):
         self.students.append(Student(sid, name, dob))
-
+#add course to the list
     def add_course(self, cid, name, credit):
         self.courses.append(Course(cid, name, credit))
-
+#add mark 
     def set_mark(self, cid, sid, mark):
         mark = math.floor(mark * 10) / 10
         self.marks.setdefault(cid, {})
@@ -63,7 +63,7 @@ class MarkManager:
     def students_sorted_by_gpa(self):
         return sorted(self.students, key=lambda s: self.gpa(s.id), reverse=True)
 
-
+# UI(User interface) -curses functions
 def prompt(stdscr, y, text):
     stdscr.addstr(y, 2, text)
     curses.echo()
@@ -71,12 +71,12 @@ def prompt(stdscr, y, text):
     curses.noecho()
     return val
 
-
+#wait for key
 def pause(stdscr, y):
     stdscr.addstr(y + 1, 2, "Press any key to continue...")
     stdscr.getch()
 
-
+#student input function
 def input_students(stdscr, mgr):
     stdscr.clear()
     n = int(prompt(stdscr, 1, "Number of students:"))
@@ -87,7 +87,7 @@ def input_students(stdscr, mgr):
         mgr.add_student(sid, name, dob)
     pause(stdscr, 6 + n * 3)
 
-
+#course input function
 def input_courses(stdscr, mgr):
     stdscr.clear()
     n = int(prompt(stdscr, 1, "Number of courses:"))
@@ -98,7 +98,7 @@ def input_courses(stdscr, mgr):
         mgr.add_course(cid, name, credit)
     pause(stdscr, 6 + n * 4)
 
-
+#mark input function
 def input_marks(stdscr, mgr):
     stdscr.clear()
     for i, c in enumerate(mgr.courses):
@@ -116,7 +116,7 @@ def input_marks(stdscr, mgr):
         y += 1
     pause(stdscr, y)
 
-
+#list courses function
 def list_courses(stdscr, mgr):
     stdscr.clear()
     stdscr.addstr(0, 2, "COURSES", curses.A_BOLD)
@@ -124,7 +124,7 @@ def list_courses(stdscr, mgr):
         stdscr.addstr(2 + i, 2, f"{c.id} - {c.name} - {c.credit} credits")
     pause(stdscr, 3 + len(mgr.courses))
 
-
+#list students function
 def list_students(stdscr, mgr):
     stdscr.clear()
     stdscr.addstr(0, 2, "STUDENTS", curses.A_BOLD)
@@ -132,7 +132,7 @@ def list_students(stdscr, mgr):
         stdscr.addstr(2 + i, 2, f"{s.id} - {s.name} - {s.dob}")
     pause(stdscr, 3 + len(mgr.students))
 
-
+#show marks function
 def show_marks(stdscr, mgr):
     stdscr.clear()
     for i, c in enumerate(mgr.courses):
@@ -150,7 +150,7 @@ def show_marks(stdscr, mgr):
         y += 1
     pause(stdscr, y)
 
-
+#show GPA ranking function
 def show_gpa_ranking(stdscr, mgr):
     stdscr.clear()
     stdscr.addstr(0, 2, "GPA RANKING (descending)", curses.A_BOLD)
@@ -159,7 +159,7 @@ def show_gpa_ranking(stdscr, mgr):
         stdscr.addstr(2 + i, 2, f"{i+1}. {s.name} ({s.id}) - GPA: {mgr.gpa(s.id):.2f}")
     pause(stdscr, 3 + len(ranked))
 
-
+#main function
 def main(stdscr):
     curses.curs_set(1)
     mgr = MarkManager()
@@ -193,6 +193,6 @@ def main(stdscr):
         elif choice == "0":
             break
 
-
+#start the program with curses wrapper
 if __name__ == "__main__":
     curses.wrapper(main)
