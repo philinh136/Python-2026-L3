@@ -1,6 +1,5 @@
 import curses
 
-
 def prompt(stdscr, y, text):
     stdscr.addstr(y, 2, text)
     curses.echo()

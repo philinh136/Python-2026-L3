@@ -1,5 +1,4 @@
 import curses
-
 from domains import MarkManager
 from input import input_students, input_courses, input_marks
 from output import show_menu, list_courses, list_students, show_marks, show_gpa_ranking
@@ -27,7 +26,6 @@ def main(stdscr):
             show_gpa_ranking(stdscr, mgr)
         elif choice == "0":
             break
-
 
 if __name__ == "__main__":
     curses.wrapper(main)

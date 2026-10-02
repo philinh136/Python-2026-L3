@@ -1,7 +1,5 @@
 import curses
-
 from output import prompt, pause
-
 
 def input_students(stdscr, mgr):
     stdscr.clear()

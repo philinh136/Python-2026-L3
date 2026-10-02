@@ -1,9 +1,7 @@
 import math
 import numpy as np
-
 from domains.student import Student
 from domains.course import Course
-
 
 class MarkManager:
     def __init__(self):
@@ -12,12 +10,14 @@ class MarkManager:
         self.marks = {}
 
     def find_student(self, sid):
+        #return next((s for s in self.students if s.id == sid), None)
         for s in self.students:
             if s.id == sid:
                 return s
         return None
 
     def find_course(self, cid):
+        #return next((c for c in self.courses if c.id == cid), None)
         for c in self.courses:
             if c.id == cid:
                 return c
