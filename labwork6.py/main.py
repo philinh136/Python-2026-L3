@@ -1,12 +1,16 @@
 import curses
+
 from domains import MarkManager
 from input import input_students, input_courses, input_marks
 from output import show_menu, list_courses, list_students, show_marks, show_gpa_ranking
-
+from storage import save_data, load_data
 
 def main(stdscr):
     curses.curs_set(1)
     mgr = MarkManager()
+
+    load_data(mgr)
+
     while True:
         choice = show_menu(stdscr)
 
@@ -25,6 +29,7 @@ def main(stdscr):
         elif choice == "7":
             show_gpa_ranking(stdscr, mgr)
         elif choice == "0":
+            save_data(mgr)
             break
 
 if __name__ == "__main__":

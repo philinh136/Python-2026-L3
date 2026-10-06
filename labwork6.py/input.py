@@ -1,23 +1,6 @@
 import curses
 from output import prompt, pause
 
-#write data to files
-def write_students(mgr):
-    with open("students.txt", "w") as f:
-        for s in mgr.students:
-            f.write(f"{s.id},{s.name},{s.dob}\n")
-
-def write_courses(mgr):
-    with open("courses.txt", "w") as f:
-        for c in mgr.courses:
-            f.write(f"{c.id},{c.name},{c.credit}\n")
-
-def write_marks(mgr):
-    with open("marks.txt", "w") as f:
-        for cid, student_marks in mgr.marks.items():
-            for sid, mark in student_marks.items():
-                f.write(f"{cid},{sid},{mark}\n")
-
 def input_students(stdscr, mgr):
     stdscr.clear()
     n = int(prompt(stdscr, 1, "Number of students:"))
@@ -26,8 +9,8 @@ def input_students(stdscr, mgr):
         name = prompt(stdscr, 4 + i * 3, f"[{i+1}] Name:")
         dob = prompt(stdscr, 5 + i * 3, f"[{i+1}] Date of birth:")
         mgr.add_student(sid, name, dob)
-    write_students(mgr)
     pause(stdscr, 6 + n * 3)
+
 
 def input_courses(stdscr, mgr):
     stdscr.clear()
@@ -37,8 +20,8 @@ def input_courses(stdscr, mgr):
         name = prompt(stdscr, 4 + i * 4, f"[{i+1}] Course name:")
         credit = float(prompt(stdscr, 5 + i * 4, f"[{i+1}] Credit:"))
         mgr.add_course(cid, name, credit)
-    write_courses(mgr)
     pause(stdscr, 6 + n * 4)
+
 
 def input_marks(stdscr, mgr):
     stdscr.clear()
@@ -55,5 +38,4 @@ def input_marks(stdscr, mgr):
         mark = float(prompt(stdscr, y, f"Mark for {s.name}:"))
         mgr.set_mark(cid, s.id, mark)
         y += 1
-    write_marks(mgr)
     pause(stdscr, y)
