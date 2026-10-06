@@ -3,7 +3,6 @@ from domains import MarkManager
 from input import input_students, input_courses, input_marks
 from output import show_menu, list_courses, list_students, show_marks, show_gpa_ranking
 
-
 def main(stdscr):
     curses.curs_set(1)
     mgr = MarkManager()

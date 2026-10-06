@@ -7,11 +7,9 @@ def prompt(stdscr, y, text):
     curses.noecho()
     return val
 
-
 def pause(stdscr, y):
     stdscr.addstr(y + 1, 2, "Press any key to continue...")
     stdscr.getch()
-
 
 def show_menu(stdscr):
     stdscr.clear()
@@ -26,7 +24,6 @@ def show_menu(stdscr):
     stdscr.addstr(9, 2, "0. Exit")
     return prompt(stdscr, 11, "Choose:")
 
-
 def list_courses(stdscr, mgr):
     stdscr.clear()
     stdscr.addstr(0, 2, "COURSES", curses.A_BOLD)
@@ -34,14 +31,12 @@ def list_courses(stdscr, mgr):
         stdscr.addstr(2 + i, 2, f"{c.id} - {c.name} - {c.credit} credits")
     pause(stdscr, 3 + len(mgr.courses))
 
-
 def list_students(stdscr, mgr):
     stdscr.clear()
     stdscr.addstr(0, 2, "STUDENTS", curses.A_BOLD)
     for i, s in enumerate(mgr.students):
         stdscr.addstr(2 + i, 2, f"{s.id} - {s.name} - {s.dob}")
     pause(stdscr, 3 + len(mgr.students))
-
 
 def show_marks(stdscr, mgr):
     stdscr.clear()
@@ -59,7 +54,6 @@ def show_marks(stdscr, mgr):
         stdscr.addstr(y, 2, f"{sid} - {name}: {mark}")
         y += 1
     pause(stdscr, y)
-
 
 def show_gpa_ranking(stdscr, mgr):
     stdscr.clear()
