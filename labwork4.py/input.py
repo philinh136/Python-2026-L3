@@ -11,7 +11,6 @@ def input_students(stdscr, mgr):
         mgr.add_student(sid, name, dob)
     pause(stdscr, 6 + n * 3)
 
-
 def input_courses(stdscr, mgr):
     stdscr.clear()
     n = int(prompt(stdscr, 1, "Number of courses:"))
@@ -21,7 +20,6 @@ def input_courses(stdscr, mgr):
         credit = float(prompt(stdscr, 5 + i * 4, f"[{i+1}] Credit:"))
         mgr.add_course(cid, name, credit)
     pause(stdscr, 6 + n * 4)
-
 
 def input_marks(stdscr, mgr):
     stdscr.clear()
