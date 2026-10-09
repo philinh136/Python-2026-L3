@@ -32,7 +32,7 @@ merged_df = pd.merge(df_students, df_scores, on="student_id", how="inner")
 merged_df["average_score"] = merged_df[["python","math", "database"]].mean(axis=1)
 
 #FIND THE TOP 5 STUDENTS
-top_5_students = merged_df["average_score"].sort_values("average_score", ascending=False).head(5)
+top_5_students = merged_df["average_score"].sort_values(ascending=False).head(5)
 print(top_5_students[["name", "average_score"]])
 
 #COMPUTE THE AVERAGE SCORE FOR EACH MAJOR
